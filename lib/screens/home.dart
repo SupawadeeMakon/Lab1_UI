@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab1/utility/mystyle.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,7 +17,8 @@ class _HomeState extends State<Home> {
       style: TextStyle(
         fontSize: 30.0,
         fontWeight: FontWeight.bold,
-        color: Colors.blue[300],
+        color: MyStyle().textColor,
+        //color: Colors.blue[300],
       ),
     );
   }
