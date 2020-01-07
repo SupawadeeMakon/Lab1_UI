@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab1/screens/secondPage.dart';
 import 'package:lab1/utility/mystyle.dart';
 
 class Home extends StatefulWidget {
@@ -63,6 +64,46 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Widget button() {
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        color: MyStyle().textColor,
+        icon: Icon(
+          Icons.account_circle,
+          color: Colors.white,
+        ),
+        label: Text(
+          'Login',
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: () {
+          var rount = MaterialPageRoute(
+              builder: (BuildContext context) => SecondPage());
+          Navigator.of(context).push(rount);
+        },
+      ),
+    );
+  }
+
+  Widget registor() {
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        color: MyStyle().textColor,
+        icon: Icon(
+          Icons.invert_colors,
+          color: Colors.white,
+        ),
+        label: Text(
+          'Registor',
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: () {},
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +124,8 @@ class _HomeState extends State<Home> {
                   showdata2(),
                   emailText(),
                   passwordText(),
+                  button(),
+                  registor(),
                 ],
               ),
             )),
