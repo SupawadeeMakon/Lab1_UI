@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lab1/screens/home.dart';
 import 'package:lab1/screens/thirdPage.dart';
+import 'package:lab1/utility/mystyle.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -10,39 +12,53 @@ class _SecondPageState extends State<SecondPage> {
   final String titleString = "SecondPage"; //ประกาศตัวแปร
   var textEditController = new TextEditingController();
 
+  Widget toHomePage() {
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        color: MyStyle().textColor,
+        icon: Icon(
+          Icons.home,
+          color: Colors.white,
+        ),
+        label: Text(
+          'Home',
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: () {
+          var rount =
+              MaterialPageRoute(builder: (BuildContext context) => Home());
+          Navigator.of(context).push(rount);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    Widget widget = new ListView(
-      children: <Widget>[
-        ListTile(
-          title: TextField(
-            controller: textEditController,
-          ),
-        ),
-        ListTile(
-          title: RaisedButton(
-            child: Text('Next to Third Page'),
-            onPressed: () {
-              var rount = MaterialPageRoute(
-                  builder: (BuildContext context) => ThirdPage(
-                        valueFromSecondPage: textEditController.text,
-                      ));
-              Navigator.of(context).push(rount);
-            },
-          ),
-        )
-      ],
-    );
+  
     return Scaffold(
       appBar: AppBar(
         title: Text(titleString),
       ),
-      body: widget,
-      // body: Container(
-      //   child: Center(
-      //     child: Image.asset('images/wall.png'),
-      //   ),
-      // ),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/wall.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                toHomePage(),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

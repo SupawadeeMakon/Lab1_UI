@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lab1/screens/secondPage.dart';
+import 'package:lab1/screens/thirdPage.dart';
 import 'package:lab1/utility/mystyle.dart';
 
 class Home extends StatefulWidget {
@@ -92,14 +93,18 @@ class _HomeState extends State<Home> {
       child: RaisedButton.icon(
         color: MyStyle().textColor,
         icon: Icon(
-          Icons.invert_colors,
+          Icons.receipt,
           color: Colors.white,
         ),
         label: Text(
           'Registor',
           style: TextStyle(color: Colors.white),
         ),
-        onPressed: () {},
+        onPressed: () {
+          var rount = MaterialPageRoute(
+              builder: (BuildContext context) => ThirdPage());
+          Navigator.of(context).push(rount);
+        },
       ),
     );
   }
