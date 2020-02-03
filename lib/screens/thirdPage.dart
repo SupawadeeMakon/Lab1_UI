@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lab1/screens/detail.dart';
 import 'package:lab1/utility/mystyle.dart';
+import 'package:flutter/services.dart';
 
 class ThirdPage extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
-  final String titleString = "ThirdPage"; //ประกาศตัวแปร
+  final String titleString = "ลงทะเบียนเข้าใช้งานระบบ"; //ประกาศตัวแปร
   var textEmailController = new TextEditingController();
   var textPassController = new TextEditingController();
   var textNameController = new TextEditingController();
@@ -26,7 +27,7 @@ class _ThirdPageState extends State<ThirdPage> {
             ),
             labelText: 'Enter Name and Surname',
             hintText: 'Name Surname'),
-            controller: textNameController,
+        controller: textNameController,
       ),
     );
   }
@@ -36,14 +37,15 @@ class _ThirdPageState extends State<ThirdPage> {
       width: 250.0,
       child: TextFormField(
         decoration: InputDecoration(
-            icon: Icon(
-              Icons.email,
-              size: 36.0,
-              color: Colors.purple[400],
-            ),
-            labelText: 'Username',
-            hintText: 'your@email.com'),
-            controller: textEmailController,
+          icon: Icon(
+            Icons.email,
+            size: 36.0,
+            color: Colors.purple[400],
+          ),
+          labelText: 'Username',
+          hintText: 'your@email.com',
+        ),
+        controller: textEmailController,
       ),
     );
   }
@@ -60,7 +62,8 @@ class _ThirdPageState extends State<ThirdPage> {
             ),
             labelText: 'Password',
             hintText: 'More 6 charactor'),
-            controller: textPassController,
+        controller: textPassController,
+        keyboardType: TextInputType.visiblePassword,
       ),
     );
   }
@@ -69,6 +72,9 @@ class _ThirdPageState extends State<ThirdPage> {
     return Container(
       width: 250.0,
       child: TextFormField(
+        inputFormatters: [WhitelistingTextInputFormatter(RegExp("[0-9]"))],
+        maxLines: null,
+        keyboardType: TextInputType.number,
         decoration: InputDecoration(
             icon: Icon(
               Icons.lock,
@@ -76,8 +82,9 @@ class _ThirdPageState extends State<ThirdPage> {
               color: Colors.purple[400],
             ),
             labelText: 'TelePhone',
-            hintText: '10 charactor'),
-            controller: textPhoneController,
+            hintText: '10 charactor',),
+        controller: textPhoneController,
+        
       ),
     );
   }

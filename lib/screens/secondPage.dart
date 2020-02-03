@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab1/screens/home.dart';
+import 'package:flutter/services.dart';
 import 'package:lab1/screens/showCal.dart';
 import 'package:lab1/utility/mystyle.dart';
 
@@ -18,6 +18,8 @@ class _SecondPageState extends State<SecondPage> {
   var valueX1 = new TextEditingController();
   var valueY1 = new TextEditingController();
 
+  //var textFieldController =new TextEditingController();
+
   Widget email() {
     return Text("ยินดีต้อนรับคุณ${widget.emailFromHomePage}");
   }
@@ -26,10 +28,24 @@ class _SecondPageState extends State<SecondPage> {
     return Text("${widget.passFromHomePage}");
   }
 
+  // Widget valueZ(){
+  //   return Container(
+
+  //         child: TextField(
+  //           controller: textFieldController,
+  //           //Allow TextFiled take in Numbers as default
+  //           keyboardType: TextInputType.number,
+  //         ),
+  //       );
+  // }
+
   Widget valueX() {
     return Container(
       width: 250.0,
       child: TextFormField(
+        inputFormatters: [WhitelistingTextInputFormatter(RegExp("[0-9]"))],
+        maxLines: null,
+        keyboardType: TextInputType.number,
         decoration: InputDecoration(
             icon: Icon(
               Icons.format_list_numbered,
@@ -47,6 +63,9 @@ class _SecondPageState extends State<SecondPage> {
     return Container(
       width: 250.0,
       child: TextFormField(
+        inputFormatters: [WhitelistingTextInputFormatter(RegExp("[0-9]"))],
+        maxLines: null,
+        keyboardType: TextInputType.number,
         decoration: InputDecoration(
             icon: Icon(
               Icons.format_list_numbered,
@@ -106,6 +125,7 @@ class _SecondPageState extends State<SecondPage> {
                 //email(),
                 valueX(),
                 valueY(),
+
                 calculator(),
               ],
             ),

@@ -25,14 +25,14 @@ class _ShowCalState extends State<ShowCal> {
   }
 
   Widget divide() {
-    return Text("หาร: ${widget.valueXfromSecond}/${widget.valueYfromSecond}");
+    return Text("หาร: ${widget.valueXfromSecond}/${widget.valueXfromSecond}");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("กรุณาตรวจสอบข้อมูล"),
+        title: Text("ผลลัพธ์"),
       ),
       body: SafeArea(
         child: Container(
