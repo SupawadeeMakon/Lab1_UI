@@ -1,18 +1,88 @@
 import 'package:flutter/material.dart';
-import 'package:lab1/screens/home.dart';
+import 'package:lab1/screens/detail.dart';
 import 'package:lab1/utility/mystyle.dart';
 
 class ThirdPage extends StatefulWidget {
-  final String valueFromSecondPage;
-  ThirdPage({Key key, this.valueFromSecondPage}) : super(key: key);
   @override
   _ThirdPageState createState() => _ThirdPageState();
 }
 
 class _ThirdPageState extends State<ThirdPage> {
   final String titleString = "ThirdPage"; //ประกาศตัวแปร
+  var textEmailController = new TextEditingController();
+  var textPassController = new TextEditingController();
+  var textNameController = new TextEditingController();
+  var textPhoneController = new TextEditingController();
 
-  Widget toHomePage() {
+  Widget nameText() {
+    return Container(
+      width: 250.0,
+      child: TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(
+              Icons.people,
+              size: 36.0,
+              color: Colors.purple[400],
+            ),
+            labelText: 'Enter Name and Surname',
+            hintText: 'Name Surname'),
+            controller: textNameController,
+      ),
+    );
+  }
+
+  Widget emailText() {
+    return Container(
+      width: 250.0,
+      child: TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(
+              Icons.email,
+              size: 36.0,
+              color: Colors.purple[400],
+            ),
+            labelText: 'Username',
+            hintText: 'your@email.com'),
+            controller: textEmailController,
+      ),
+    );
+  }
+
+  Widget passwordText() {
+    return Container(
+      width: 250.0,
+      child: TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(
+              Icons.phone,
+              size: 36.0,
+              color: Colors.purple[400],
+            ),
+            labelText: 'Password',
+            hintText: 'More 6 charactor'),
+            controller: textPassController,
+      ),
+    );
+  }
+
+  Widget phoneText() {
+    return Container(
+      width: 250.0,
+      child: TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(
+              Icons.lock,
+              size: 36.0,
+              color: Colors.purple[400],
+            ),
+            labelText: 'TelePhone',
+            hintText: '10 charactor'),
+            controller: textPhoneController,
+      ),
+    );
+  }
+
+  Widget toDetailPage() {
     return Container(
       width: 250.0,
       child: RaisedButton.icon(
@@ -26,8 +96,13 @@ class _ThirdPageState extends State<ThirdPage> {
           style: TextStyle(color: Colors.white),
         ),
         onPressed: () {
-          var rount =
-              MaterialPageRoute(builder: (BuildContext context) => Home());
+          var rount = MaterialPageRoute(
+              builder: (BuildContext context) => DetailPage(
+                    name: textNameController.text,
+                    email: textEmailController.text,
+                    password: textPassController.text,
+                    phone: textPhoneController.text,
+                  ));
           Navigator.of(context).push(rount);
         },
       ),
@@ -57,7 +132,11 @@ class _ThirdPageState extends State<ThirdPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                toHomePage(),
+                nameText(),
+                emailText(),
+                passwordText(),
+                phoneText(),
+                toDetailPage(),
               ],
             ),
           ),

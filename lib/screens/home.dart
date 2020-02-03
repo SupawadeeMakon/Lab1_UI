@@ -9,6 +9,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var textEmailController = new TextEditingController();
+  var textPassController = new TextEditingController();
+
   Widget showdata1() {
     return Text('showdata1');
   }
@@ -45,6 +48,7 @@ class _HomeState extends State<Home> {
             ),
             labelText: 'Username',
             hintText: 'your@email.com'),
+        controller: textEmailController,
       ),
     );
   }
@@ -61,6 +65,7 @@ class _HomeState extends State<Home> {
             ),
             labelText: 'Password',
             hintText: 'More 6 charactor'),
+        controller: textPassController,
       ),
     );
   }
@@ -80,7 +85,10 @@ class _HomeState extends State<Home> {
         ),
         onPressed: () {
           var rount = MaterialPageRoute(
-              builder: (BuildContext context) => SecondPage());
+              builder: (BuildContext context) => SecondPage(
+                    emailFromHomePage: textEmailController.text,
+                    passFromHomePage: textPassController.text,
+                  ));
           Navigator.of(context).push(rount);
         },
       ),
@@ -101,8 +109,8 @@ class _HomeState extends State<Home> {
           style: TextStyle(color: Colors.white),
         ),
         onPressed: () {
-          var rount = MaterialPageRoute(
-              builder: (BuildContext context) => ThirdPage());
+          var rount =
+              MaterialPageRoute(builder: (BuildContext context) => ThirdPage());
           Navigator.of(context).push(rount);
         },
       ),
